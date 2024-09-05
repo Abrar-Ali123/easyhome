@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -9,15 +11,19 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['web', 'auth.custom'])->group(function () {
+Route::middleware(['web'])->group(function () {
 
     Route::post('/comments/{product}', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/orders/{product}', [OrderController::class, 'store'])->name('orders.store');
+    Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+
+    Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
     Route::post('/comments/{comment}/toggle-visibility', [CommentController::class, 'toggleVisibility']);
     Route::post('/replies/{comment}', [ReplyController::class, 'store']);
     Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
 });
-
-Route::resource('orders', OrderController::class);
 
 Route::post('comments/{product}', [CommentController::class, 'store'])->name('comments.store');
 Route::post('comments/{comment}/toggle-visibility', [CommentController::class, 'toggleVisibility'])->name('comments.toggleVisibility');
@@ -59,6 +65,7 @@ Route::get('/2', function () {
 Route::get('/login', function () {
     return view('login');
 });
+<<<<<<< HEAD
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
@@ -68,6 +75,15 @@ Route::get('/login', function () {
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 
+=======
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+>>>>>>> 7b4cb275c979ceff11d108ea9d68e300526deaff
 
 Route::get('/single', [ProductController::class, 'single'])->name('single');
 
@@ -83,8 +99,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/property/{product}', [ProductController::class, 'show'])->name('property.show');
 
+<<<<<<< HEAD
 //profile
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+=======
+Route::prefix('dashboard')->middleware('check.employee')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
+    Route::get('/reports', [DashboardController::class, 'reports'])->name('dashboard.reports');
+    // أضف مسارات أخرى هنا
+});
+
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::patch('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+
+// مثال على المسار في routes/web.php
+Route::resource('cities', CityController::class);
+>>>>>>> 7b4cb275c979ceff11d108ea9d68e300526deaff

@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'لارافيل') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <meta charset="UTF-8">
 
 
-     <link href="{{ asset('/css/front.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/front.css') }}" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صفحة المثال</title>
 </head>
 <body>
+@include('parts.login_popup')
+
+
+
+
 
     <header>
         <nav>
             <div>
-                <a href="#">
-                    <img src="/images/9.png" alt="Logo" />
-                </a>
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="{{ asset('/images/9.png') }}" class="w-20 h-20" />
+        </a>
                 <button type="button" aria-controls="navbar-default" aria-expanded="false">
                     <span class="sr-only">افتح القائمة</span>
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -41,17 +48,47 @@
                 </button>
                 <div id="navbar-default">
                     <ul>
+
+                    <li><!-- زر فتح النافذة المنبثقة -->
+                    <button id="filter-button" class="filter-btn icon-container">
+    <i class="fas fa-sliders-h"></i>
+</button>
+
+
+
+</li>
                         <li><a href="#">الرئيسية</a></li>
                         <li><a href="#">العقارات</a></li>
                         <li><a href="#">من نحن</a></li>
                         <li><a href="#">اطلب عقارك</a></li>
                         <li><a href="#">طلب استثمار</a></li>
+
                         <li>
-                             <a id="openPopup"><i class="fas fa-user"></i></a>
+                            @guest
+                                <a id="openPopup"><i class="fas fa-user"></i></a>
+                            @else
+                                <a href="#" id="userMenuToggle" style="display: flex; align-items: center;">
+                                    <img src="{{ Auth::user()->avatar }}" alt="صورة المستخدم" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
+                                    <span>{{ Auth::user()->name }}</span>
+                                </a>
+                                <ul id="userMenu" class="dropdown-menu" style="display: none; position: absolute; background-color: white; list-style: none; padding: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                                    <li>
+                                        <a class="dropdown-item" href="#">الملف الشخصي</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            تسجيل الخروج
+                                        </a>
+                                    </li>
+                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            @endguest
                         </li>
-                        <li>
-                            <a href="#"><i class="fas fa-heart"></i></a>
-                         </li>
+
                         <li>
                              <a class="toggle-theme-btn" onclick="toggleTheme()" id="themeIcon">☀️</a>
                         </li>
@@ -61,6 +98,104 @@
         </nav>
     </header>
 
+
+
+
+<!-- النافذة المنبثقة للبحث والفلترة -->
+<div id="filter-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2>خيارات البحث والفرز</h2>
+        <input type="text" placeholder="ابحث عن عقار..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+        <div class="search-filters mt-3">
+            <select class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option value="">نوع العقار</option>
+                <option value="شقة">شقة</option>
+                <option value="فيلا">فيلا</option>
+                <option value="روف">روف</option>
+                <option value="دور">دور</option>
+                <option value="استثمار">استثمار</option>
+            </select>
+            <!-- يمكنك إضافة المزيد من الحقول هنا -->
+        </div>
+    </div>
+</div>
+
+<!-- CSS للزر والنافذة المنبثقة -->
+<style>
+
+.filter-btn {
+
+     background: rgba(255, 255, 255, 0.5); /* خلفية شفافة */
+    padding: 10px; /* المسافة الداخلية حول الأيقونة */
+    border: none; /* إزالة الحدود الافتراضية للزر */
+    border-radius: 50%; /* جعل الخلفية دائرية */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+    cursor: pointer; /* مؤشر اليد عند التمرير */
+    z-index: 1000; /* لضمان بقاء الأيقونة فوق العناصر الأخرى */
+}
+
+.filter-btn i {
+    font-size: 24px; /* حجم الأيقونة */
+    color: #003e37; /* لون الأيقونة */
+}
+
+/* النافذة المنبثقة */
+.modal {
+    display: none; /* مخفية بشكل افتراضي */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    position: relative;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+}
+</style>
+
+<!-- JavaScript للنافذة المنبثقة -->
+<script>
+// عرض النافذة المنبثقة عند الضغط على زر الفلترة
+document.getElementById('filter-button').addEventListener('click', function() {
+    document.getElementById('filter-modal').style.display = 'flex';
+});
+
+// إغلاق النافذة عند الضغط على زر الإغلاق
+document.getElementById('close-modal').addEventListener('click', function() {
+    document.getElementById('filter-modal').style.display = 'none';
+});
+
+// إغلاق النافذة عند الضغط خارج المحتوى
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('filter-modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+</script>
+
+
+
     <div class="content">
         @yield('content')
     </div>
@@ -68,134 +203,6 @@
     <footer>
         © 2024 جميع الحقوق محفوظة
     </footer>
-
-
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const button = document.querySelector('nav button');
-        const navbar = document.getElementById('navbar-default');
-
-        button.addEventListener('click', function() {
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            button.setAttribute('aria-expanded', !isExpanded);
-            navbar.classList.toggle('show');
-        });
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            var themeIcon = document.getElementById('themeIcon');
-            if (document.body.classList.contains('dark-theme')) {
-                themeIcon.textContent = '🌙';
-            } else {
-                themeIcon.textContent = '☀️';
-            }
-        }
-
-        function toggleLanguage() {
-            const currentLang = document.documentElement.getAttribute('lang');
-            const newLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.documentElement.setAttribute('lang', newLang);
-            document.documentElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-            document.getElementById('langButton').textContent = newLang === 'ar' ? 'English' : 'العربية';
-        }
-
-        document.addEventListener('scroll', function() {
-            const nav = document.querySelector('header nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-
-
-    });
-    </script>
-
-
-<!-- نافذة تسجيل الدخول المنبثقة -->
-<div id="popup">
-    <div class="popup-content">
-        <div class="container">
-
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-            <span class="close">&times;</span>
-
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ Route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-
-                                <a class="btn btn-link" href="{{ route('register') }}">
-            {{ __('Don\'t have an account? Register here') }}
-        </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-</div>
 
 <style>
 /* نافذة تسجيل الدخول المنبثقة */
@@ -213,10 +220,9 @@
 }
 
 .popup-content {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-     position: relative;
-
+    position: relative;
 }
 
 .popup-content .close {
@@ -286,11 +292,53 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('openPopup').addEventListener('click', function() {
+    // التحكم في زر القائمة في التنقل
+    const button = document.querySelector('nav button');
+    const navbar = document.getElementById('navbar-default');
+
+    button.addEventListener('click', function() {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !isExpanded);
+        navbar.classList.toggle('show');
+    });
+
+    // تبديل الوضع بين الداكن والفاتح
+    function toggleTheme() {
+        document.body.classList.toggle('dark-theme');
+        const themeIcon = document.getElementById('themeIcon');
+        if (document.body.classList.contains('dark-theme')) {
+            themeIcon.textContent = '🌙'; // تغيير الأيقونة إلى القمر في الوضع الداكن
+        } else {
+            themeIcon.textContent = '☀️'; // تغيير الأيقونة إلى الشمس في الوضع الفاتح
+        }
+    }
+
+    // ربط زر تبديل الوضع بالوظيفة
+    document.getElementById('themeIcon')?.addEventListener('click', toggleTheme);
+
+    // التحكم في القائمة المتحركة عند التمرير
+    document.addEventListener('scroll', function() {
+        const nav = document.querySelector('header nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // عرض قائمة المستخدم عند تسجيل الدخول
+    document.getElementById('userMenuToggle')?.addEventListener('click', function(event) {
+        event.preventDefault();
+        const userMenu = document.getElementById('userMenu');
+        userMenu.style.display = userMenu.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // التحكم في ظهور النافذة المنبثقة لتسجيل الدخول
+    document.getElementById('openPopup')?.addEventListener('click', function() {
         document.getElementById('popup').style.display = 'flex';
     });
 
-    document.querySelector('.popup-content .close').addEventListener('click', function() {
+    document.querySelector('.popup-content .close')?.addEventListener('click', function() {
         document.getElementById('popup').style.display = 'none';
     });
 
@@ -299,25 +347,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('popup').style.display = 'none';
         }
     });
-});
 
-
-
-
-</script>
-
-
-
-<!-- إضافة روابط JS -->
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-<script>
     // تفعيل مكتبة GLightbox
     const lightbox = GLightbox();
-
-    // تبديل الوضع الداكن والفاتح
-    function toggleTheme() {
-        document.body.classList.toggle('dark-mode');
-    }
 
     // عرض الصور المصغرة في المعرض الرئيسي عند النقر عليها
     document.querySelectorAll('.property-gallery img').forEach(img => {
@@ -325,14 +357,8 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.property-main img').src = this.src;
         });
     });
+});
 </script>
-
-
-
-
-
-
-
 
 
 </body>

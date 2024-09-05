@@ -1,69 +1,13 @@
-<!DOCTYPE html>
-<html lang="rtl">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+@section('title', 'عرض العقارات')
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>{{ __('messages.page_title') }}</title>
-    <style>
-
-html, body {
-    font-family: '29LT Adir', sans-serif;
-    direction: rtl;
-    width: 100%;
-display: cover;
-box-sizing: border-box;
-overflow-x: hidden
-
-         }
-
-
-        .bg-primary {
-        background-color: #003E37;
-        color: #BB9339;
-
-    }
-
-    .bg-primary {
-        background-color: #003E37;
-        color: #BB9339;
-
-    }
-
-
-    .text-primary {
-        color: #BB9339;
-    }
+@section('content')
+<!-- Font Awesome CDN -->
 
 
 
-    .secondary {
-        background-color: #003E37;
-        color: #ffffff;
-
-     }
-       select {
-        background-position: right 12px center;
-        background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M0 0l2 2.5L4 0"/></svg>');
-        background-repeat: no-repeat;
-        background-size: 0.65em auto;
-        padding-right: 1.25em;
-    }
-
-    </style>
-</head>
-
-<body>
+<!-- الزر لفتح النافذة المنبثقة -->
 
 
 
@@ -71,7 +15,21 @@ overflow-x: hidden
 
 
 
+<div class="prat">
+        <video autoplay muted loop>
+        <source src="{{ asset('images/4.mp4') }}" type="video/mp4">
+            متصفحك لا يدعم عرض الفيديو.
+        </video>
+        <div class="overlay"></div>
+        <div class="absolute bottom-12 right-0 p-8">
+    <div class="text-right text-white">
+        <h1 class="text-4xl md:text-4xl font-bold mb-4"> ايزي هوم حيث الحلول العقارية المبتكرة      </h1>
+        <p class="text-xl md:text-2xl">اكتشف أفضل العقارات بأفضل الأسعار</p>
+    </div>
+</div>
+    </div>
 
+<<<<<<< HEAD
     <div class="">
  <!-- Exi
   sting Headers -->
@@ -135,14 +93,34 @@ overflow-x: hidden
 {{--</a>--}}
 
             </ul>
+=======
+    <div class="values-section" id="values">
+        <h2>قيمنا</h2>
+        <div class="value-box">
+            <i class="fas fa-balance-scale"></i>
+            <p>النزاهة</p>
+        </div>
+        <div class="value-box">
+            <i class="fas fa-lightbulb"></i>
+            <p>الابتكار</p>
+        </div>
+        <div class="value-box">
+            <i class="fas fa-gem"></i>
+            <p>الجودة</p>
+        </div>
+        <div class="value-box">
+            <i class="fas fa-handshake"></i>
+            <p>الالتزام</p>
+>>>>>>> 7b4cb275c979ceff11d108ea9d68e300526deaff
         </div>
     </div>
-</nav>
 
 
-<!-- زر فتح النافذة المنبثقة -->
 
-<!-- نافذة منبثقة -->
+
+
+
+
 
 
             </div>
@@ -322,9 +300,31 @@ overflow-x: hidden
             document.getElementById('popup').style.display = 'none';
         }
     });
+
+
+
+    // عرض النافذة المنبثقة عند الضغط على الزر
+document.getElementById('filter-button').addEventListener('click', function() {
+    document.getElementById('filter-modal').style.display = 'block';
+});
+
+// إغلاق النافذة عند الضغط على زر الإغلاق
+document.getElementById('close-modal').addEventListener('click', function() {
+    document.getElementById('filter-modal').style.display = 'none';
+});
+
+// إغلاق النافذة عند الضغط خارج المحتوى
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('filter-modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
 </script>
 
 
+<<<<<<< HEAD
 {{--<section class="mb-12">--}}
 {{--<header id="header" class="relative w-full h-screen mb-32">--}}
 {{--    <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>--}}
@@ -555,6 +555,11 @@ overflow-x: hidden
             </div>
         </div>
     </section>
+=======
+
+
+
+>>>>>>> 7b4cb275c979ceff11d108ea9d68e300526deaff
 
     <section class="mt-8 px-4">
     <h2 class="text-2xl font-bold mb-4 text-center">عقارات مميزة</h2>
@@ -769,16 +774,24 @@ overflow-x: hidden
 <br>
 <br>
 <br>
-<section id="section" class="relative w-full bg-primary">
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96 bg-gray-100 flex items-center bg-primary">
-        <div class="bg-primary w-1/2 h-full bg-cover bg-center" style="background-image: url('{{ asset('images/5.png') }}');"></div>
-        <div class="bg-primary w-1/2 h-full flex flex-col justify-center items-start p-8 bg-gray-800 text-white">
-            <a href="#about" class="px-6 py-3 bg-primary text-white font-bold rounded hover:bg-blue-600 transition duration-200 mb-4 text-2xl underline decoration-solid">رؤيتنـــــا</a>
-            <h1 class="text-2xl mb-4 text-white">أن نصبح الشركة الرائدة في قطاع العقارات من خلال تقديم أعلى مستويات الخدمة لعملائنا وتحقيق أقصى قيمة مضافة لهم.</h1>
-            <p class="text-lg mb-8">اكتشف أفضل العقارات بأفضل الأسعار</p>
+
+
+
+<section id="section" class="section-container">
+    <div class="section-inner">
+        <div class="section-image" style="background-image: url('{{ asset('images/5.png') }}');">
+        <div></div>
+
         </div>
+        <div class="section-content">
+            <a href="#about" class="section-link">رؤيتنـــــا</a>
+            <h1 class="section-title">أن نصبح الشركة الرائدة في قطاع العقارات من خلال تقديم أعلى مستويات الخدمة لعملائنا وتحقيق أقصى قيمة مضافة لهم.</h1>
+         </div>
     </div>
 </section>
+
+
+
 
 <br>
 <br>
@@ -837,55 +850,7 @@ overflow-x: hidden
 <br>
             </div>
         </div>
-     <!-- Footer -->
-     <footer class="bg-gray-900 text-white py-8 bg-primary">
-    <div class="max-w-screen-xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div>
-            <h3 class="text-lg font-bold mb-4">معلومات عنا</h3>
-            <p class="text-gray-400">نحن شركة عقارية رائدة تقدم أفضل الخدمات والحلول لعملائنا لتحقيق أهدافهم الاستثمارية.</p>
-        </div>
-        <div>
-            <h3 class="text-lg font-bold mb-4">روابط سريعة</h3>
-            <ul class="space-y-2">
-                <li><a href="#" class="text-gray-400 hover:text-white">الرئيسية</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white">العقارات</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white">من نحن</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white">اطلب عقارك</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white">طلب استثمار</a></li>
-                <li><a href="{{route('login')}}" class="text-gray-400 hover:text-white">التسجيل/تسجيل الدخول</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3 class="text-lg font-bold mb-4">تواصل معنا</h3>
-            <ul class="space-y-2">
-                <li class="flex items-center space-x-2 rtl:space-x-reverse">
-                    <i class="fas fa-phone-alt text-primary ml-4"></i>
-                    <span class="text-gray-400 ml-4">+966 1234 5678</span>
-                </li>
-                <li class="flex items-center space-x-2 rtl:space-x-reverse">
-                    <i class="fas fa-envelope text-primary ml-4"></i>
-                    <span class="text-gray-400">info@example.com</span>
-                </li>
-                <li class="flex items-center space-x-2 rtl:space-x-reverse">
-                    <i class="fas fa-map-marker-alt text-primary ml-4"></i>
-                    <span class="text-gray-400">1234 شارع الملك، جدة</span>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h3 class="text-lg font-bold mb-4">تابعنا</h3>
-            <ul class="flex space-x-4 rtl:space-x-reverse">
-                <li><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter mr-4"></i></a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="mt-8 border-t border-gray-700 pt-4 text-center text-gray-500">
-        <p>&copy; 2024 جميع الحقوق محفوظة. شركة puzzle.</p>
-    </div>
-</footer>
+
 
 
     </div>
@@ -1080,6 +1045,6 @@ overflow-x: hidden
 
     </script>
 
-</body>
 
-</html>
+
+@endsection
