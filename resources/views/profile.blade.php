@@ -175,7 +175,7 @@
         </p>
         <p><span class="label">العمر:</span> <span class="value">{{ $user->age }}</span></p>
 
-        <a href="{{ route('profile.show', $user->id) }}" class="edit-button">تعديل الملف الشخصي</a>
+        <a href="{{ route('profile.edit', $user->id) }}" class="edit-button">تعديل الملف الشخصي</a>
     </section>
 </div>
 

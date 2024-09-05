@@ -118,80 +118,22 @@ overflow-x: hidden
                     <a href="#"
                         class="block py-2 px-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white hover:text-[#d4af37] md:hover:text-[#d4af37] dark:hover:text-[#d4af37]">طلب استثمار</a>
                 </li>
-                <li>
-                    <a href="{{route('login')}}"
-                       class="block py-2 px-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white hover:text-[#d4af37] md:hover:text-[#d4af37] dark:hover:text-[#d4af37]">التسجيل/تسجيل الدخول</a>
-                </li>
+
                 <li class="flex space-x-4 rtl:space-x-reverse mr-4 ml-4">
                     <a href="#" class="text-white hover:text-[#d4af37]">
                         <i class="fas fa-heart mr-4 ml-4"></i>
                     </a>
+                </li>
+                <li>
+                    <a id="openPopup "><i class="text-white fas fa-user"></i></a>
+                </li>
 
-
-
-                    <!-- HTML for Dropdown Menu -->
-                    <div class="dropdown" onmouseleave="hideDropdown()">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" onclick="toggleDropdown()" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user mr-4 ml-4 text-white"></i>
-                        </button>
-                        <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton" style="display: none;">
-                            <a class="dropdown-item" href="{{route('login')}}">تسجيل الدخول </a>
-                            <a class="dropdown-item" href="{{route('register')}}">التسجيل</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('تسجيل الخروج') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- JavaScript for Toggle Functionality -->
-                    <script>
-                        function toggleDropdown() {
-                            const dropdownMenu = document.getElementById('dropdownMenu');
-                            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-                        }
-
-                        function hideDropdown() {
-                            document.getElementById('dropdownMenu').style.display = 'none';
-                        }
-                    </script>
-
-                    <!-- CSS for Basic Styling (Optional) -->
-                    <style>
-		                .dropdown-menu {
-			                position: absolute;
-			                background-color: #fff;
-			                border: 1px solid #ccc;
-			                border-radius: 4px;
-			                width: 200px;
-			                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-		                }
-		                .dropdown-item {
-			                padding: 10px;
-			                text-align: right;
-			                color: #333;
-			                text-decoration: none;
-			                display: block;
-		                }
-		                .dropdown-item:hover {
-			                background-color: #f0f0f0;
-		                }
-                    </style>
 
 
                     {{--                    <a  id="openPopup" class="text-white hover:text-[#d4af37] mr-4 ml-4">--}}
 {{--    <i class="fas fa-user mr-4 ml-4"></i>--}}
 {{--</a>--}}
 
-                </li>
             </ul>
         </div>
     </div>
@@ -383,236 +325,236 @@ overflow-x: hidden
 </script>
 
 
-<section class="mb-12">
-<header id="header" class="relative w-full h-screen mb-32">
-    <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>
-        <source src="{{ asset('images/4.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="absolute bottom-12 right-0 p-8">
-    <div class="text-right text-white">
-        <h1 class="text-4xl md:text-4xl font-bold mb-4"> ايزي هوم حيث الحلول العقارية المبتكرة      </h1>
-        <p class="text-xl md:text-2xl">اكتشف أفضل العقارات بأفضل الأسعار</p>
-    </div>
-</div>
+{{--<section class="mb-12">--}}
+{{--<header id="header" class="relative w-full h-screen mb-32">--}}
+{{--    <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>--}}
+{{--        <source src="{{ asset('images/4.mp4') }}" type="video/mp4">--}}
+{{--        Your browser does not support the video tag.--}}
+{{--    </video>--}}
+{{--    <div class="absolute bottom-12 right-0 p-8">--}}
+{{--    <div class="text-right text-white">--}}
+{{--        <h1 class="text-4xl md:text-4xl font-bold mb-4"> ايزي هوم حيث الحلول العقارية المبتكرة      </h1>--}}
+{{--        <p class="text-xl md:text-2xl">اكتشف أفضل العقارات بأفضل الأسعار</p>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
-</div>
+{{--</div>--}}
 
-    <br><br>
-<br><br>
+{{--    <br><br>--}}
+{{--<br><br>--}}
 
-    <div class="absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-4 text-center">ابحث عن عقار</h2>
-        <p class="text-center mb-4">نساعدك علي إيجاد منزل أحلامك</p>
-        <div class="mb-4">
-            <input type="text" placeholder="ابحث عن عقار..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                <option value="">نوع العقار</option>
-                <option value="شقة">شقة</option>
-                <option value="فيلا">فيلا</option>
-                <option value="روف">روف</option>
-                <option value="دور">دور</option>
-                <option value="استثمار">استثمار</option>
-            </select>
-            <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                <option value="">السعر</option>
-                <option value="0-50000">0 - 50,000 ريال</option>
-                <option value="50000-100000">50,000 - 100,000 ريال</option>
-                <option value="100000-200000">100,000 - 200,000 ريال</option>
-            </select>
-            <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                <option value="">عدد الغرف</option>
-                <option value="1">1 غرفة</option>
-                <option value="2">2 غرف</option>
-                <option value="3">3 غرف</option>
-                <option value="4">4 غرف</option>
-            </select>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
-                <i class="fas fa-home mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2 ">شقة</span>
-            </button>
-            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
-                <i class="fas fa-warehouse mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">فيلا</span>
-            </button>
-            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
-                <i class="fas fa-building mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">روف</span>
-            </button>
-            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
-                <i class="fas fa-layer-group mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">دور</span>
-            </button>
-            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
-                <i class="fas fa-business-time mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">استثمار</span>
-            </button>
-            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-</header>
-
-</section>
-
-<br>
-<br><br>
-
-
-<section class="relative z-0 mb-12 pt-16 mb-4">
-    <div class="m-8"> <!-- تغيير الهامش هنا ليكون متساوي من جميع الجهات -->
-        <h2 class="text-2xl font-bold text-center ">قيمنا</h2>
-        <div class="flex justify-center items-center gap-4 m-4"> <!-- استخدام gap بدلاً من space-x -->
-
-            <div class="border max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->
-                <div class="flex justify-center">
-                    <i class="fas fa-award text-4xl text-white-500"></i>
-                </div>
-                <div class="mt-2">
-                    <h3 class="text-lg font-semibold">التزام</h3>
-                </div>
-            </div>
-
-            <div class="max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->
-                <div class="flex justify-center">
-                    <i class="fas fa-lightbulb text-4xl text-white-500"></i>
-                </div>
-                <div class="mt-2">
-                    <h3 class="text-lg font-semibold">إبداع</h3>
-                </div>
-            </div>
-
-            <div class="max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->
-                <div class="flex justify-center">
-                    <i class="fas fa-headset text-4xl text-white-500"></i>
-                </div>
-                <div class="mt-2">
-                    <h3 class="text-lg font-semibold">خدمة العملاء</h3>
-                </div>
-            </div>
-
-            <div class="max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->
-                <div class="flex justify-center">
-                    <i class="fas fa-users text-4xl text-white-500"></i>
-                </div>
-                <div class="mt-2">
-                    <h3 class="text-lg font-semibold">التعاون</h3>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-{{--    <section class="mb-12">--}}
-{{--        <header id="header" class="relative w-full h-screen mb-32">--}}
-{{--            <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>--}}
-{{--                <source src="{{ asset('images/4.mp4') }}" type="video/mp4">--}}
-{{--                Your browser does not support the video tag.--}}
-{{--            </video>--}}
-
-{{--            <div class="absolute bottom-12 right-0 p-4 md:p-8 max-w-3xl">--}}
-{{--                <div class="text-right text-white">--}}
-{{--                    <h1 class="text-2xl md:text-4xl font-bold mb-4">ايزي هوم حيث الحلول العقارية المبتكرة</h1>--}}
-{{--                    <p class="text-lg md:text-2xl">اكتشف أفضل العقارات بأفضل الأسعار</p>--}}
-{{--                </div>--}}
-{{--                <div class="absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white p-6 rounded-lg shadow-lg ">--}}
-{{--                </div>--}}
-{{--                <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">ابحث عن عقار</h2>--}}
-{{--                <p class="text-center mb-4">نساعدك علي إيجاد منزل أحلامك</p>--}}
-{{--                <div class="mb-4">--}}
-{{--                    <input type="text" placeholder="ابحث عن عقار..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
-{{--                </div>--}}
-{{--                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">--}}
-{{--                    <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
-{{--                        <option value="">نوع العقار</option>--}}
-{{--                        <option value="شقة">شقة</option>--}}
-{{--                        <option value="فيلا">فيلا</option>--}}
-{{--                        <option value="روف">روف</option>--}}
-{{--                        <option value="دور">دور</option>--}}
-{{--                        <option value="استثمار">استثمار</option>--}}
-{{--                    </select>--}}
-{{--                    <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
-{{--                        <option value="">السعر</option>--}}
-{{--                        <option value="0-50000">0 - 50,000 ريال</option>--}}
-{{--                        <option value="50000-100000">50,000 - 100,000 ريال</option>--}}
-{{--                        <option value="100000-200000">100,000 - 200,000 ريال</option>--}}
-{{--                    </select>--}}
-{{--                    <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
-{{--                        <option value="">عدد الغرف</option>--}}
-{{--                        <option value="1">1 غرفة</option>--}}
-{{--                        <option value="2">2 غرف</option>--}}
-{{--                        <option value="3">3 غرف</option>--}}
-{{--                        <option value="4">4 غرف</option>--}}
-{{--                    </select>--}}
-{{--                </div>--}}
-{{--                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">--}}
-{{--                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
-{{--                        <i class="fas fa-home mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2 ">شقة</span>--}}
-{{--                    </button>--}}
-{{--                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
-{{--                        <i class="fas fa-warehouse mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">فيلا</span>--}}
-{{--                    </button>--}}
-{{--                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
-{{--                        <i class="fas fa-building mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">روف</span>--}}
-{{--                    </button>--}}
-{{--                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
-{{--                        <i class="fas fa-layer-group mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">دور</span>--}}
-{{--                    </button>--}}
-{{--                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
-{{--                        <i class="fas fa-business-time mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">استثمار</span>--}}
-{{--                    </button>--}}
-{{--                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
-{{--                        <i class="fas fa-search"></i>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </header>--}}
-{{--    </section>--}}
-
-{{--    <section class="relative z-0 mb-12 pt-16">--}}
-{{--        <div class="container mx-auto px-4">--}}
-{{--            <h2 class="text-2xl font-bold text-center mb-8">قيمنا</h2>--}}
-{{--            <div class="flex flex-wrap justify-center items-center gap-4">--}}
-{{--                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">--}}
-{{--                    <div class="flex justify-center">--}}
-{{--                        <i class="fas fa-award text-4xl text-white-500"></i>--}}
-{{--                    </div>--}}
-{{--                    <div class="mt-2">--}}
-{{--                        <h3 class="text-lg font-semibold">التزام</h3>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">--}}
-{{--                    <div class="flex justify-center">--}}
-{{--                        <i class="fas fa-lightbulb text-4xl text-white-500"></i>--}}
-{{--                    </div>--}}
-{{--                    <div class="mt-2">--}}
-{{--                        <h3 class="text-lg font-semibold">إبداع</h3>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">--}}
-{{--                    <div class="flex justify-center">--}}
-{{--                        <i class="fas fa-headset text-4xl text-white-500"></i>--}}
-{{--                    </div>--}}
-{{--                    <div class="mt-2">--}}
-{{--                        <h3 class="text-lg font-semibold">خدمة العملاء</h3>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">--}}
-{{--                    <div class="flex justify-center">--}}
-{{--                        <i class="fas fa-users text-4xl text-white-500"></i>--}}
-{{--                    </div>--}}
-{{--                    <div class="mt-2">--}}
-{{--                        <h3 class="text-lg font-semibold">التعاون</h3>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+{{--    <div class="absolute top-3/4 left-1/2 transform -translate-x-1/2 translate-y-16 w-3/4 bg-white p-6 rounded-lg shadow-lg">--}}
+{{--        <h2 class="text-2xl font-bold mb-4 text-center">ابحث عن عقار</h2>--}}
+{{--        <p class="text-center mb-4">نساعدك علي إيجاد منزل أحلامك</p>--}}
+{{--        <div class="mb-4">--}}
+{{--            <input type="text" placeholder="ابحث عن عقار..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
 {{--        </div>--}}
-{{--    </section>--}}
+{{--        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">--}}
+{{--            <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
+{{--                <option value="">نوع العقار</option>--}}
+{{--                <option value="شقة">شقة</option>--}}
+{{--                <option value="فيلا">فيلا</option>--}}
+{{--                <option value="روف">روف</option>--}}
+{{--                <option value="دور">دور</option>--}}
+{{--                <option value="استثمار">استثمار</option>--}}
+{{--            </select>--}}
+{{--            <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
+{{--                <option value="">السعر</option>--}}
+{{--                <option value="0-50000">0 - 50,000 ريال</option>--}}
+{{--                <option value="50000-100000">50,000 - 100,000 ريال</option>--}}
+{{--                <option value="100000-200000">100,000 - 200,000 ريال</option>--}}
+{{--            </select>--}}
+{{--            <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">--}}
+{{--                <option value="">عدد الغرف</option>--}}
+{{--                <option value="1">1 غرفة</option>--}}
+{{--                <option value="2">2 غرف</option>--}}
+{{--                <option value="3">3 غرف</option>--}}
+{{--                <option value="4">4 غرف</option>--}}
+{{--            </select>--}}
+{{--        </div>--}}
+{{--        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">--}}
+{{--            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
+{{--                <i class="fas fa-home mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2 ">شقة</span>--}}
+{{--            </button>--}}
+{{--            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
+{{--                <i class="fas fa-warehouse mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">فيلا</span>--}}
+{{--            </button>--}}
+{{--            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
+{{--                <i class="fas fa-building mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">روف</span>--}}
+{{--            </button>--}}
+{{--            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
+{{--                <i class="fas fa-layer-group mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">دور</span>--}}
+{{--            </button>--}}
+{{--            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
+{{--                <i class="fas fa-business-time mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">استثمار</span>--}}
+{{--            </button>--}}
+{{--            <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">--}}
+{{--                <i class="fas fa-search"></i>--}}
+{{--            </button>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</header>--}}
+
+{{--</section>--}}
+
+{{--<br>--}}
+{{--<br><br>--}}
+
+
+{{--<section class="relative z-0 mb-12 pt-16 mb-4">--}}
+{{--    <div class="m-8"> <!-- تغيير الهامش هنا ليكون متساوي من جميع الجهات -->--}}
+{{--        <h2 class="text-2xl font-bold text-center ">قيمنا</h2>--}}
+{{--        <div class="flex justify-center items-center gap-4 m-4"> <!-- استخدام gap بدلاً من space-x -->--}}
+
+{{--            <div class="border max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->--}}
+{{--                <div class="flex justify-center">--}}
+{{--                    <i class="fas fa-award text-4xl text-white-500"></i>--}}
+{{--                </div>--}}
+{{--                <div class="mt-2">--}}
+{{--                    <h3 class="text-lg font-semibold">التزام</h3>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--            <div class="max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->--}}
+{{--                <div class="flex justify-center">--}}
+{{--                    <i class="fas fa-lightbulb text-4xl text-white-500"></i>--}}
+{{--                </div>--}}
+{{--                <div class="mt-2">--}}
+{{--                    <h3 class="text-lg font-semibold">إبداع</h3>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--            <div class="max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->--}}
+{{--                <div class="flex justify-center">--}}
+{{--                    <i class="fas fa-headset text-4xl text-white-500"></i>--}}
+{{--                </div>--}}
+{{--                <div class="mt-2">--}}
+{{--                    <h3 class="text-lg font-semibold">خدمة العملاء</h3>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--            <div class="max-w-sm bg-primary rounded-lg shadow-white-all p-4 text-center"> <!-- إزالة الهوامش هنا -->--}}
+{{--                <div class="flex justify-center">--}}
+{{--                    <i class="fas fa-users text-4xl text-white-500"></i>--}}
+{{--                </div>--}}
+{{--                <div class="mt-2">--}}
+{{--                    <h3 class="text-lg font-semibold">التعاون</h3>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
+
+
+    <section class="mb-12">
+        <header id="header" class="relative w-full h-screen mb-32">
+            <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>
+                <source src="{{ asset('images/4.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="absolute bottom-12 right-0 p-4 md:p-8 max-w-3xl">
+                <div class="text-right text-white">
+                    <h1 class="text-2xl md:text-4xl font-bold mb-4">ايزي هوم حيث الحلول العقارية المبتكرة</h1>
+                    <p class="text-lg md:text-2xl">اكتشف أفضل العقارات بأفضل الأسعار</p>
+                </div>
+                <div class="absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white p-6 rounded-lg shadow-lg ">
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">ابحث عن عقار</h2>
+                <p class="text-center mb-4">نساعدك علي إيجاد منزل أحلامك</p>
+                <div class="mb-4">
+                    <input type="text" placeholder="ابحث عن عقار..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option value="">نوع العقار</option>
+                        <option value="شقة">شقة</option>
+                        <option value="فيلا">فيلا</option>
+                        <option value="روف">روف</option>
+                        <option value="دور">دور</option>
+                        <option value="استثمار">استثمار</option>
+                    </select>
+                    <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option value="">السعر</option>
+                        <option value="0-50000">0 - 50,000 ريال</option>
+                        <option value="50000-100000">50,000 - 100,000 ريال</option>
+                        <option value="100000-200000">100,000 - 200,000 ريال</option>
+                    </select>
+                    <select class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option value="">عدد الغرف</option>
+                        <option value="1">1 غرفة</option>
+                        <option value="2">2 غرف</option>
+                        <option value="3">3 غرف</option>
+                        <option value="4">4 غرف</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
+                        <i class="fas fa-home mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2 ">شقة</span>
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
+                        <i class="fas fa-warehouse mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">فيلا</span>
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
+                        <i class="fas fa-building mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">روف</span>
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
+                        <i class="fas fa-layer-group mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">دور</span>
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
+                        <i class="fas fa-business-time mr-2 text-primary mr-4 ml-4"></i> <span class="ml-2">استثمار</span>
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center hover:bg-opacity-90 transition duration-300">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <section class="relative z-0 mb-12 pt-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">قيمنا</h2>
+            <div class="flex flex-wrap justify-center items-center gap-4">
+                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">
+                    <div class="flex justify-center">
+                        <i class="fas fa-award text-4xl text-white-500"></i>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-lg font-semibold">التزام</h3>
+                    </div>
+                </div>
+
+                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">
+                    <div class="flex justify-center">
+                        <i class="fas fa-lightbulb text-4xl text-white-500"></i>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-lg font-semibold">إبداع</h3>
+                    </div>
+                </div>
+
+                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">
+                    <div class="flex justify-center">
+                        <i class="fas fa-headset text-4xl text-white-500"></i>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-lg font-semibold">خدمة العملاء</h3>
+                    </div>
+                </div>
+
+                <div class="border bg-primary rounded-lg shadow-lg p-4 text-center max-w-sm">
+                    <div class="flex justify-center">
+                        <i class="fas fa-users text-4xl text-white-500"></i>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-lg font-semibold">التعاون</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="mt-8 px-4">
     <h2 class="text-2xl font-bold mb-4 text-center">عقارات مميزة</h2>
@@ -947,6 +889,196 @@ overflow-x: hidden
 
 
     </div>
+    <!-- نافذة تسجيل الدخول المنبثقة -->
+    <div id="popup">
+        <div class="popup-content">
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <span class="close">&times;</span>
+
+                            <div class="card-header">{{ __('Login') }}</div>
+
+                            <div class="card-body">
+                                <form method="POST" action="{{ Route('login') }}">
+                                    @csrf
+
+                                    <div class="row mb-3">
+                                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 offset-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                                <label class="form-check-label" for="remember">
+                                                    {{ __('Remember Me') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-0">
+                                        <div class="col-md-8 offset-md-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ __('Login') }}
+                                            </button>
+
+                                            @if (Route::has('password.request'))
+                                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                    {{ __('Forgot Your Password?') }}
+                                                </a>
+                                            @endif
+
+                                            <a class="btn btn-link" href="{{ route('register') }}">
+                                                {{ __('Don\'t have an account? Register here') }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* نافذة تسجيل الدخول المنبثقة */
+        #popup {
+            display: none; /* مخفية في البداية */
+            position: fixed;
+            z-index: 1000; /* فوق كل شيء */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* خلفية شفافة */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: relative;
+
+        }
+
+        .popup-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .inputBox {
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .inputBox input {
+            width: 100%;
+            padding: 10px;
+            background: none;
+            border: none;
+            border-bottom: 1px solid #000;
+            outline: none;
+        }
+
+        .inputBox label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .inputBox input:focus ~ label,
+        .inputBox input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #03a9f4;
+            font-size: 12px;
+        }
+
+        .inputBox i {
+            position: absolute;
+            top: 10px;
+            right: 0;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .google-icon::before {
+            content: url('path/to/google-icon.png'); /* استبدل path/to/google-icon.png بمسار أيقونة Google */
+        }
+
+        .facebook-icon::before {
+            content: url('path/to/facebook-icon.png'); /* استبدل path/to/facebook-icon.png بمسار أيقونة Facebook */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('openPopup').addEventListener('click', function() {
+                document.getElementById('popup').style.display = 'flex';
+            });
+
+            document.querySelector('.popup-content .close').addEventListener('click', function() {
+                document.getElementById('popup').style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == document.getElementById('popup')) {
+                    document.getElementById('popup').style.display = 'none';
+                }
+            });
+        });
+
+
+
+
+    </script>
 
 </body>
 
